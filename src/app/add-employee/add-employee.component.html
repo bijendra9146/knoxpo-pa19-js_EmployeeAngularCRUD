@@ -1,0 +1,59 @@
+<div class="form-wrapper">
+    <h3>Registration Form </h3>
+
+  <div class="col-md-6 col-sm-6 centerField">
+  <form [formGroup]="employeeForm" (ngSubmit)="insertNewEmployeeRecord()">
+      <div class="form-group">
+          <label for="name" class="bmd-label-floating">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" required>
+          <div *ngIf="!!validateField?.name.invalid && !!validateField?.name.touched">Name Is Required</div>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="bmd-label-floating">Mobile</label>
+            <input type="text" class="form-control" id="mobile" formControlName="mobile" required>
+          <div *ngIf="!!validateField?.mobile.invalid && !!validateField?.mobile.touched">Mobile Is Required</div>
+
+          </div>
+      <div class="form-group">
+          <label for="email" class="bmd-label-floating">Email address</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+          <!-- <span class="bmd-help">We'll never share your email with anyone else.</span> -->
+          <div *ngIf="!!validateField?.email.invalid && !!validateField?.email.touched">Email Is Required</div>
+
+        </div>
+        <div class="form-group">
+            <label for="jobTitle" class="bmd-label-floating">Working Profile</label>
+            <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle" required>
+          <div *ngIf="!!validateField?.jobTitle.invalid && !!validateField?.jobTitle.touched">Job Title Is Required</div>
+
+          </div>
+    <button class="btn btn-default" (click)="employeeForm.reset()">Reset</button>
+    <button type="submit" class="btn btn-primary btn-raised" [disabled]="employeeForm.invalid">Submit</button>
+
+  </form>
+  <div class="table-responsive" *ngIf="showNewInsertRecordFlag">
+    <h3>Entry added successfully!</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Job Title</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let element of sucessInsertArrayData; let i = index">
+          <tr>
+            <th scope="row">{{i}}</th>
+            <td>{{element.name}}</td>
+            <td>{{element.email}}</td>
+            <td>{{element.mobile}}</td>
+            <td>{{element.jobTitle}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+  </div>
+  </div>

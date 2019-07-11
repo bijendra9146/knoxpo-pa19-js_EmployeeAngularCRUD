@@ -1,0 +1,58 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let element of responseArrayData; let i = index">
+      <tr>
+        <th scope="row">{{i}}</th>
+        <td>{{element.name}}</td>
+        <td>{{element.email}}</td>
+        <td>{{element.mobile}}</td>
+        <td>{{element.jobTitle}}</td>
+        <td><ul>
+          <li><button type="button" class="btn btn-raised btn-info" (click)="selectToUpdateEmployee(element)" >Update</button></li>
+          <li><button (click)="passDataToModel(element)" type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#deleteModel">
+            Delete</button></li>
+         </ul></td>
+
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" *ngIf="deleteModelFieldFlag">
+
+            <p>Name : {{deleteModelData.name}}</p>
+            <p>Email : {{deleteModelData.email}}</p>
+            <p>Mobile : {{deleteModelData.mobile}}</p>
+            <p>Job Title : {{deleteModelData.jobTitle}}</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-raised btn-primary" (click)="deleteEmployeeItem()" data-dismiss="modal">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>

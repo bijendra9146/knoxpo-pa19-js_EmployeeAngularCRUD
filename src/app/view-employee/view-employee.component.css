@@ -1,0 +1,14 @@
+
+
+.centerField{
+  margin: 0px auto;
+}
+.table ul{
+  padding: 0px 0px;
+}
+.table ul li{
+display: inline-block;
+text-decoration: none;
+list-style: none;
+margin-right:5px;
+}

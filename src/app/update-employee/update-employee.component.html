@@ -1,0 +1,59 @@
+<!-- Update Employee Form -->
+<div class="form-wrapper">
+  <h3>Update Employee Details </h3>
+  <div class="col-md-6 col-sm-6 centerField">
+  <form [formGroup]="employeeForm" (ngSubmit)="updateEmployeeData()">
+      <div class="form-group">
+          <label for="name" class="bmd-label-floating">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" required>
+          <div *ngIf="!!validateField?.name.invalid && !!validateField?.name.touched">Name Is Required</div>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="bmd-label-floating">Mobile</label>
+            <input type="text" class="form-control" id="mobile" formControlName="mobile" disabled="true">
+          <div *ngIf="!!validateField?.mobile.invalid && !!validateField?.mobile.touched">Mobile Is Required</div>
+
+          </div>
+      <div class="form-group">
+          <label for="email" class="bmd-label-floating">Email address</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+          <div *ngIf="!!validateField?.email.invalid && !!validateField?.email.touched">Email Is Required</div>
+
+        </div>
+        <div class="form-group">
+            <label for="jobTitle" class="bmd-label-floating">Working Profile</label>
+            <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle" required>
+          <div *ngIf="!!validateField?.jobTitle.invalid && !!validateField?.jobTitle.touched">Job Title Is Required</div>
+
+          </div>
+    <button class="btn btn-default" (click)="cancelRecord(); employeeForm.reset()">Cancel</button>
+    <button type="submit" class="btn btn-primary btn-raised" [disabled]="employeeForm.invalid">Submit</button>
+
+  </form>
+
+  <div class="table-responsive" *ngIf="showUpdateListFlag">
+    <h3>Entry added sucessfull!</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Job Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">0</th>
+            <td>{{sucessUpdateArrayData.name}}</td>
+            <td>{{sucessUpdateArrayData.email}}</td>
+            <td>{{sucessUpdateArrayData.mobile}}</td>
+            <td>{{sucessUpdateArrayData.jobTitle}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+  </div>
+  </div>
